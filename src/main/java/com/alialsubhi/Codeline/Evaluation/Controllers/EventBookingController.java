@@ -27,5 +27,10 @@ public class EventBookingController {
         return eventBookingService.getAllEventBookings();
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteEventBooking(@PathVariable("id") Long id) {
+        eventBookingService.deleteEventBooking(id);
+    }
+
 }
 //test the github

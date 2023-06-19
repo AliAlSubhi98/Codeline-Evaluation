@@ -49,4 +49,8 @@ public class EventBookingService {
     public List<Booking> getAllEventBookings() {
         return bookingRepository.findAll();
     }
+
+    public void deleteEventBooking(Long id) {
+        bookingRepository.deleteById(id);
+    }
 }
