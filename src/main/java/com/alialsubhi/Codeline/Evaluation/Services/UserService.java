@@ -17,7 +17,7 @@ public class UserService {
     public void registerUser(UserRegistrationRequest registrationRequest){
         User user = new User();
         user.setUsername(registrationRequest.getUsername());
-        user.setUsername(registrationRequest.getPassword());
+        user.setPassword(registrationRequest.getPassword());
 
         userRepository.save(user);
     }
