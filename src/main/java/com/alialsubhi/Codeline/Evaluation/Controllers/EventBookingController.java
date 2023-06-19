@@ -19,3 +19,4 @@ public class EventBookingController {
         return eventBookingService.bookEvent(eventId, userId, numberOfTickets);
     }//http://localhost:8080/api/events/1/bookings?userId=1
 }
+//test the github
