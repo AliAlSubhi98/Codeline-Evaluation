@@ -23,7 +23,9 @@ public class EventBookingService {
 
     public Booking bookEvent(Long eventId, Long userId, int numberOfTickets) {
         Event event = eventRepository.findById(eventId).get();
-
+        if (event.getTicketsAvailable() == 0) {
+            throw new IllegalArgumentException("There is no Tickets for this event.");
+        }
         if (event.getTicketsAvailable() < numberOfTickets) {
             throw new IllegalArgumentException("Insufficient tickets available for booking " +
                     "Tickets available only " + event.getTicketsAvailable()  );
