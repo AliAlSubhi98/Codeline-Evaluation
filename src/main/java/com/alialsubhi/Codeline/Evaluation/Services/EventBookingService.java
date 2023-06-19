@@ -9,6 +9,8 @@ import com.alialsubhi.Codeline.Evaluation.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EventBookingService {
 
@@ -42,5 +44,9 @@ public class EventBookingService {
         booking.setNumberOfTickets(numberOfTickets);
 
         return bookingRepository.save(booking);
+    }
+
+    public List<Booking> getAllEventBookings() {
+        return bookingRepository.findAll();
     }
 }

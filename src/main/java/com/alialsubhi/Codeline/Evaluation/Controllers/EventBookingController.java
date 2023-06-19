@@ -6,8 +6,10 @@ import com.alialsubhi.Codeline.Evaluation.Services.EventBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/events")
+@RequestMapping("/api/booking")
 public class EventBookingController {
 
     @Autowired
@@ -18,5 +20,12 @@ public class EventBookingController {
         int numberOfTickets = bookingRequest.getNumberOfTickets();
         return eventBookingService.bookEvent(eventId, userId, numberOfTickets);
     }//http://localhost:8080/api/events/1/bookings?userId=1
+
+
+    @GetMapping
+    public List<Booking> getAllEventBookings() {
+        return eventBookingService.getAllEventBookings();
+    }
+
 }
 //test the github

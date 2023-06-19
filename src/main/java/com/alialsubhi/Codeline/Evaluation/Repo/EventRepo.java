@@ -15,10 +15,9 @@ public interface EventRepo extends JpaRepository <Event,Long> {
     @Query("SELECT e FROM Event e WHERE (:location IS NULL OR e.location = :location)"
             + " AND (:dateFrom IS NULL OR e.date >= :dateFrom)"
             + " AND (:dateTo IS NULL OR e.date <= :dateTo)"
-            + " AND (:eventName IS NULL OR e.name LIKE %:eventName%)")
+            + " AND (:eventName IS NULL OR e.name LIKE CONCAT('%', :eventName, '%'))")
     List<Event> search(@Param("location") String location,
                        @Param("dateFrom") LocalDate dateFrom,
                        @Param("dateTo") LocalDate dateTo,
                        @Param("eventName") String eventName);
-
 }
