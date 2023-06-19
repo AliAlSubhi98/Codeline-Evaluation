@@ -33,4 +33,13 @@ public class UserController {
         return userService.GetUserByUsername(username);
     }
 
+    @PutMapping("/{id}")
+    public void updateUser(@PathVariable("id") Long id , @RequestBody UserUpdateRequest updateRequest){
+        userService.updateUser(id, updateRequest);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser (@PathVariable("id") Long id){
+        userService.deleteUser(id);
+    }
 }
