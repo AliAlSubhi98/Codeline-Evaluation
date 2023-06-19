@@ -7,8 +7,8 @@ import lombok.*;
 @Data
 @Setter
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "bookings")
 public class Booking {
     @Id
@@ -25,4 +25,6 @@ public class Booking {
 
     private int numberOfTickets;
 
+    public Booking(Event event, int numberOfTickets) {
+    }
 }
