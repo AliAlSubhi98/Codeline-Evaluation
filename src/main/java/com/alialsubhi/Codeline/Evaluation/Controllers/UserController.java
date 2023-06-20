@@ -16,8 +16,9 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/register")
-    public void registerUser(@RequestBody UserRegistrationRequest registrationRequest) {
+    public String registerUser(@RequestBody UserRegistrationRequest registrationRequest) {
         userService.registerUser(registrationRequest);
+        return "User Created";
     }
 
     @GetMapping
