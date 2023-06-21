@@ -16,6 +16,7 @@ public class EventController {
     @Autowired
     EventService eventService;
 
+    //http://localhost:8080/api/events?location=codeline&dateFrom=2023-06-19&dateTo=2023-06-21&eventName=book
     @GetMapping
     public List<Event> searchEvents(@RequestParam(required = false) String location,
                                     @RequestParam(required = false) LocalDate dateFrom,
@@ -24,6 +25,16 @@ public class EventController {
         return eventService.searchEvents(location, dateFrom, dateTo, eventName);
     }
 
+
+    /*http://localhost:8080/api/events
+    {
+      "name": "Code Event",
+      "date": "2023-06-21",
+      "location": "TechnoPark ",
+      "ticketsAvailable": 50
+    }
+
+     */
     @PostMapping
     public void createEvent(@RequestBody EventCreationRequest creationRequest) {
         eventService.createEvent(creationRequest);

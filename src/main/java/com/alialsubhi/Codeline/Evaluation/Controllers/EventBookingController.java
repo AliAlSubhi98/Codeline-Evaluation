@@ -15,18 +15,27 @@ public class EventBookingController {
     @Autowired
     EventBookingService eventBookingService;
 
+    /*http://localhost:8080/api/booking/2/bookings?userId=4
+
+    {
+      "numberOfTickets": 11
+    }
+
+     */
     @PostMapping("/{eventId}/bookings")
     public Booking bookEvent(@PathVariable Long eventId, @RequestParam Long userId, @RequestBody BookingRequest bookingRequest) {
         int numberOfTickets = bookingRequest.getNumberOfTickets();
         return eventBookingService.bookEvent(eventId, userId, numberOfTickets);
-    }//http://localhost:8080/api/events/1/bookings?userId=1
+    }
 
 
+    //http://localhost:8080/api/booking
     @GetMapping
     public List<Booking> getAllEventBookings() {
         return eventBookingService.getAllEventBookings();
     }
 
+    //http://localhost:8080/api/booking/2
     @DeleteMapping("/{id}")
     public void deleteEventBooking(@PathVariable("id") Long id) {
         eventBookingService.deleteEventBooking(id);

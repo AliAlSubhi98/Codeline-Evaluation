@@ -21,24 +21,39 @@ public class UserController {
         return "User Created";
     }
 
+    //http://localhost:8080/api/users
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+
+    //http://localhost:8080/api/users/5
     @GetMapping("/{id}")
     public User getUserByID(@PathVariable("id") Long id){
         return userService.getUserByID(id);
     }
+
+    //http://localhost:8080/api/users/username/Ali
     @GetMapping("/username/{username}")
     public User getUserByUsername(@PathVariable("username") String username){
         return userService.GetUserByUsername(username);
     }
 
+    /*http://localhost:8080/api/users/1
+
+    {
+        "username": "Ali",
+        "password": "PassUpdated"
+    }
+
+     */
     @PutMapping("/{id}")
     public void updateUser(@PathVariable("id") Long id , @RequestBody UserUpdateRequest updateRequest){
         userService.updateUser(id, updateRequest);
     }
 
+
+    //http://localhost:8080/api/users/2
     @DeleteMapping("/{id}")
     public void deleteUser (@PathVariable("id") Long id){
         userService.deleteUser(id);
