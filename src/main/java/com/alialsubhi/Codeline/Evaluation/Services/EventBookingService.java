@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventBookingService {
@@ -50,7 +51,12 @@ public class EventBookingService {
         return bookingRepository.findAll();
     }
 
-    public void deleteEventBooking(Long id) {
-        bookingRepository.deleteById(id);
+    public boolean deleteEventBooking(Long id) {
+        Optional<Booking> isBookingExist = bookingRepository.findById(id);
+        if(isBookingExist.isPresent()) {
+            bookingRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
