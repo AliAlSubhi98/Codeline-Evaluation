@@ -48,14 +48,17 @@ public class UserController {
 
      */
     @PutMapping("/{id}")
-    public void updateUser(@PathVariable("id") Long id , @RequestBody UserUpdateRequest updateRequest){
+    public String updateUser(@PathVariable("id") Long id , @RequestBody UserUpdateRequest updateRequest){
         userService.updateUser(id, updateRequest);
+        return "The user updated Successfully";
+
     }
 
 
     //http://localhost:8080/api/users/2
     @DeleteMapping("/{id}")
-    public void deleteUser (@PathVariable("id") Long id){
+    public String deleteUser (@PathVariable("id") Long id){
         userService.deleteUser(id);
+        return "The user deleted Successfully";
     }
 }
