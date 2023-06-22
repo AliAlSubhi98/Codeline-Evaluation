@@ -36,8 +36,9 @@ public class EventController {
 
      */
     @PostMapping
-    public void createEvent(@RequestBody EventCreationRequest creationRequest) {
+    public String createEvent(@RequestBody EventCreationRequest creationRequest) {
         eventService.createEvent(creationRequest);
+        return "The event created successfully";
     }
 
 
