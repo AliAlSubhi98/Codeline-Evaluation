@@ -18,7 +18,7 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(@RequestBody UserRegistrationRequest registrationRequest) {
         userService.registerUser(registrationRequest);
-        return "User Created";
+        return "The user Created Successfully";
     }
 
     //http://localhost:8080/api/users
