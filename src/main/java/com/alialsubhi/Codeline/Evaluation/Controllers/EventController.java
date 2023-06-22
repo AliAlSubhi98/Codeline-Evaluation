@@ -4,6 +4,8 @@ import com.alialsubhi.Codeline.Evaluation.Models.Event;
 import com.alialsubhi.Codeline.Evaluation.Requests.EventCreationRequest;
 import com.alialsubhi.Codeline.Evaluation.Services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -36,9 +38,10 @@ public class EventController {
 
      */
     @PostMapping
-    public String createEvent(@RequestBody EventCreationRequest creationRequest) {
+    public ResponseEntity<String> createEvent(@RequestBody EventCreationRequest creationRequest) {
         eventService.createEvent(creationRequest);
-        return "The event created successfully";
+        return ResponseEntity.status(HttpStatus.CREATED).body("The event created successfully");
+        //return "The event created successfully";
     }
 
 
